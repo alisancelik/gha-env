@@ -8,13 +8,18 @@ env:
   user_value: Alisan_Celik
 jobs:
   test:
+    env:
+      DB_USER_MONGO: ${{secrets.DB_USER}}
+      DB_USER_PASSWORD: ${{secrets.DB_PASSWORD}}
     environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
         uses: actions/checkout@v3
       - name: Greating
-        run: echo "testing was done!!!"
+        run: |
+            echo "testing was done!!!"
+            echo "Your DB Password is:${{env.DB_USER_PASSWORD}}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
