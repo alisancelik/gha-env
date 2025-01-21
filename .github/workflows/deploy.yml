@@ -20,6 +20,8 @@ jobs:
         run: |
             echo "testing was done!!!"
             echo "Your DB Password is:${{env.DB_USER_PASSWORD}}"
+            echo "Your DB Password is:${{secrets.DB_PASSWORD}}"
+            
   deploy:
     needs: test
     runs-on: ubuntu-latest
